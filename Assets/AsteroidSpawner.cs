@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-    public uint AsteroidsCount = 5;
+    public GameObject player;
+    public float safeZone = 20f;
+    public uint StartingAsteroidsCount = 5;
     public GameObject AsteroidClone;
-    // Start is called before the first frame update
+    public float initialSpawnTime;
+    public float spawnDelay;
+    private float angle;
+
     void Start()
     {
-        float depth = Camera.main.transform.position.y - transform.position.y;
-        for (uint i = 0; i < AsteroidsCount; i++) {
-            Vector3 ViewportPos = new Vector3(Random.value, Random.value, depth);
-            Vector3 WorldPos = Camera.main.ViewportToWorldPoint(ViewportPos);
-            Instantiate(AsteroidClone, WorldPos, Random.rotation);
+        for (int i = 0;i < StartingAsteroidsCount;i++)
+        {
+            SpawnAsteroid();
         }
+        InvokeRepeating("SpawnAsteroid", initialSpawnTime, spawnDelay);
     }
 
+    void SpawnAsteroid()
+    {
+        angle = Random.Range(-Mathf.PI, Mathf.PI);
+        Vector3 spawn = player.transform.position;
+        spawn += new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * safeZone;
+
+        Instantiate(AsteroidClone, spawn, Random.rotation);
+    }
 }

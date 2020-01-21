@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PLayerProjectile : MonoBehaviour
+public class PlayerProjectile : MonoBehaviour
 {
     public float speed = 20f; 
     public Rigidbody rb;

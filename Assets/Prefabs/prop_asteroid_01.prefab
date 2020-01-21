@@ -125,3 +125,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 3.5
   MinSpeed: 3
+  player: {fileID: 100000, guid: 4caf598f9f2f994419082e702b4d1d55, type: 3}

@@ -31,4 +31,9 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(transform.position + displacement);
 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }

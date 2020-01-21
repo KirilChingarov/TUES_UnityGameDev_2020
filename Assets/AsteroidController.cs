@@ -14,4 +14,8 @@ public class AsteroidController : MonoBehaviour
         rb.velocity = new Vector3(velocity.x, 0, velocity.y);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }
